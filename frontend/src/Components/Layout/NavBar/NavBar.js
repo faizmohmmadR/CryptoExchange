@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   AppBar,
+  Box,
   Button,
   Container,
   Grid,
@@ -16,10 +17,39 @@ const tabStyle = {
 };
 
 const buttonStyle = {
-  color: "white",
   textTransform: "capitalize",
   fontWeight: "bold",
-  padding: "15px",
+  padding: "10px 15px",
+};
+
+const CustomButton = () => {
+  return (
+    <Box>
+      <Button
+        sx={{
+          ...buttonStyle,
+          mr: 3,
+          bgcolor: "white",
+          color: "red",
+
+          ":hover": { backgroundColor: "red", color: "white" },
+        }}
+      >
+        Become Sponser
+      </Button>
+      <Button
+        sx={{
+          ...buttonStyle,
+          mr: 3,
+          bgcolor: "red",
+          color: "white",
+          ":hover": { backgroundColor: "white", color: "red" },
+        }}
+      >
+        By Tickets
+      </Button>
+    </Box>
+  );
 };
 
 const NavBar = () => {
@@ -29,8 +59,17 @@ const NavBar = () => {
     setValue(newValue);
   };
   return (
-    <Container maxWidth="xl">
-      <AppBar sx={{ padding: "20px", bgcolor: "#071952" }}>
+    <Container
+      maxWidth="xl"
+      sx={{ position: "sticky", top: "0%", zIndex: "2" }}
+    >
+      <AppBar
+        sx={{
+          padding: "10px",
+          bgcolor: "#071952",
+          opacity: "0.9",
+        }}
+      >
         <Grid container>
           <Grid item xs={3} md={3} textAlign={"center"}>
             <Typography variant="h4" fontWeight={"bold"}>
@@ -49,12 +88,7 @@ const NavBar = () => {
           </Grid>
 
           <Grid item xs={3} md={3} textAlign={"center"}>
-            <Button variant="contained" sx={{ mr: 3 }} style={buttonStyle}>
-              Become Sponser
-            </Button>
-            <Button variant="contained" style={buttonStyle}>
-              By Tickets
-            </Button>
+            <CustomButton />
           </Grid>
         </Grid>
       </AppBar>{" "}
